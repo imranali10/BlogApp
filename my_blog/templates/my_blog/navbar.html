@@ -1,0 +1,71 @@
+<nav class="navbar navbar-expand-lg navbar-dark bgDark">
+  <a class="navbarBrand" href="/">iCoders<span>Blogs </span></a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item {{ home_page }}">
+        <a class="nav-link" href="/"><i class="fas fa-home"></i> Home</a>
+      </li>
+      <li class="nav-item {{ blog_page }}">
+        <a class="nav-link" href="/blog"
+          ><i class="fab fa-blogger nav-icons"></i>Blog</a
+        >
+      </li>
+
+      <li class="nav-item {{ contact_page }}">
+        <a class="nav-link" href="{% url 'contact' %}"
+          ><i class="fas fa-id-card-alt nav-icons"></i>Contact Us</a
+        >
+      </li>
+      {% if user.is_authenticated%}
+      <li class="nav-item {{ create_blog_page }}">
+        <a class="nav-link" href="{% url 'create_blog' %}"
+          ><i class="far fa-plus-square nav-icons"></i>CreateBlog</a
+        >
+      </li>
+      <li class="nav-item {{ dashboard_page }}">
+        <a class="nav-link" href="{% url 'dashboard' %}"
+          ><i class="fas fa-chalkboard-teacher nav-icons"></i>Dashboard</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'logout' %}">
+          <i class="fas fa-sign-out-alt nav-icons"></i>Logout</a
+        >
+      </li>
+
+      {% else%}
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'register' %}">
+          <i class="fas fa-sign-out-alt nav-icons"></i>Register</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'login' %}">
+          <i class="fas fa-sign-in-alt nav-icons"></i>Login</a
+        >
+      </li>
+      {% endif%}
+    </ul>
+    <form action="/search" method="get" class="form-inline my-2 my-lg-0">
+      <input
+        class="form-control mr-sm-2"
+        type="search"
+        placeholder="Search"
+        aria-label="Search"
+      />
+      <button class="button1" type="submit">Search</button>
+    </form>
+  </div>
+</nav>

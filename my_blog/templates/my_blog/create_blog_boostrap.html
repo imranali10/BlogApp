@@ -1,0 +1,48 @@
+{% extends 'my_blog/base.html' %} {% block body %}
+
+<div class="container">
+  <h2 class="my-3">Add Blog</h2>
+  <form action="/create_blog/" method="POST">
+    {%csrf_token%}
+    <div class="form-group">
+      <label for="exampleFormControlInput1">Title:</label>
+      <input type="text" class="form-control" id="title" name="title" />
+    </div>
+    <div class="form-group">
+      <label for="exampleFormControlTextarea1">Content:</label>
+      <textarea
+        class="form-control"
+        id="content"
+        name="content"
+        rows="10"
+      ></textarea>
+    </div>
+    <div class="form-group">
+      <label for="exampleFormControlInput1">Desc:</label>
+      <input type="text" class="form-control" id="desc" name="desc" />
+    </div>
+    <div class="form-group">
+      <label for="exampleFormControlInput1">Slug:</label>
+      <input type="text" class="form-control" id="slug" name="slug" />
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+  </form>
+</div>
+
+{% endblock body %}
+
+<!--
+def createBlog(request):
+    if request.method == 'POST':
+        title = request.POST.get("title")
+        content = request.POST.get("content")
+        desc = request.POST.get("desc")
+        slug = request.POST.get("slug")
+        instance = Blog(title=title, content=content, desc=desc, slug=slug)
+
+        instance.save()
+        return redirect('/blog')
+    context = {'create_blog_page': 'active'}
+    return render(request, 'my_blog/create_blog.html', context)
+
+-->

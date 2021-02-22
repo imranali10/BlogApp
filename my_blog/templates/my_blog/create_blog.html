@@ -1,0 +1,12 @@
+{% extends 'my_blog/base.html' %} {% block body %} {% if user.is_authenticated%}
+<div class="container card">
+  <h2 class="mb-4">Add Blog</h2>
+  <form action="/create_blog/" method="POST">
+    {%csrf_token%}
+    <div class="form-group">{{form.media}} {{form.as_p}}</div>
+
+    <button type="submit" class="button1">Save</button>
+  </form>
+</div>
+
+{%else%} you're not allowed here {% endif%} {% endblock body %}

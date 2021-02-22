@@ -1,0 +1,65 @@
+<div class="footer-container">
+  <section class="footer-subscription">
+    <h1 class="footer-subscription-heading">STAY UP TO DATE ON OUR JOURNEY</h1>
+    <p class="footer-subscription-text">
+      Join our mailing list for the latest Blogs
+    </p>
+    <div class="input-areas">
+      <form method="post">
+        {% csrf_token%}
+        <input
+          class="footer-input"
+          name="email"
+          type="email"
+          placeholder="Your Email"
+        />
+        <button type="submit" class="Subscribe-btn">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="social-media">
+    <div class="social-media-wrap">
+      <div class="footer-logo">
+        <a href="/" class="social-logo footerBrand">
+          iCoders <span>Blogs</span>
+        </a>
+      </div>
+      <small class="website-rights"> © 2021 ICODERS TECH LIMITED </small>
+      <div class="social-icons">
+        <a
+          class="social-icon-link instagram"
+          href="/"
+          target="_blank"
+          aria-label="Instagram"
+        >
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a
+          class="social-icon-link github"
+          href="/"
+          target="_blank"
+          aria-label="Github"
+        >
+          <i class="fab fa-github"></i>
+        </a>
+        <a
+          class="social-icon-link linkedin"
+          href="/"
+          target="_blank"
+          aria-label="Linkedin"
+        >
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a
+          class="social-icon-link twitter"
+          href="/"
+          target="_blank"
+          aria-label="Twitter"
+        >
+          <i class="fab fa-twitter"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+</div>

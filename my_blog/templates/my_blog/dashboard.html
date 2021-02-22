@@ -1,0 +1,141 @@
+{% extends 'my_blog/base.html' %} {% block body %} {% if user.is_authenticated%}
+<div class="text-info">
+  <h3 class="my-3 text-center">Admin Dashboard</h3>
+  <hr />
+  <div class="container">
+    <div class="text-center">
+      <ul class="list-group">
+        <li
+          class="list-group-item d-flex justify-content-between align-items-center"
+        >
+          Total Number of Blog Posts
+          <span class="badge badge-primary badge-pill">{{no_of_blogs}}</span>
+        </li>
+        <li
+          class="list-group-item d-flex justify-content-between align-items-center"
+        >
+          Messages
+          <span class="badge badge-primary badge-pill">{{no_of_msg}}</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="my-3">
+      <div class="">
+        <div class="row">
+          <div class="col-12">
+            <div
+              class="list-group list-group-horizontal"
+              id="list-tab"
+              role="tablist"
+            >
+              <a
+                class="list-group-item list-group-item-action active"
+                id="list-select-list"
+                data-toggle="list"
+                href="#list-select"
+                role="tab"
+                aria-controls="select"
+                >Select One</a
+              >
+              <a
+                class="list-group-item list-group-item-action"
+                id="list-Blog List-list"
+                data-toggle="list"
+                href="#list-Blog"
+                role="tab"
+                aria-controls="Blog"
+                >Blog List</a
+              >
+              <a
+                class="list-group-item list-group-item-action px-2"
+                id="list-messages-list"
+                data-toggle="list"
+                href="#list-messages"
+                role="tab"
+                aria-controls="messages"
+                >Messages</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="tab-content" id="nav-tabContent">
+              <div
+                class="tab-pane fade show active"
+                id="list-select"
+                role="tabpanel"
+                aria-labelledby="list-select-list"
+              ></div>
+              <div
+                class="tab-pane fade"
+                id="list-Blog"
+                role="tabpanel"
+                aria-labelledby="list-Blog-list"
+              >
+                <div>
+                  <li
+                    class="list-group-item d-flex justify-content-between align-items-center"
+                  >
+                    <h3>Blog List</h3>
+                  </li>
+                  {% for blog in blogs%}
+
+                  <ul class="list-group">
+                    <li
+                      class="list-group-item d-flex justify-content-between align-items-center"
+                    >
+                      <h6>
+                        <a href="/blogpost/{{blog.slug}}" class="text-info"
+                          >{{blog.title}}</a
+                        >
+                      </h6>
+                      <a href="/blogpost/{{blog.slug}}" class="text-dark"
+                        ><button class="btn btn-outline-primary btn-sm">
+                          Read More
+                        </button>
+                      </a>
+                    </li>
+                  </ul>
+                  {% endfor %}
+                </div>
+              </div>
+              <div
+                class="tab-pane fade"
+                id="list-messages"
+                role="tabpanel"
+                aria-labelledby="list-messages-list"
+              >
+                <div>
+                  <li
+                    class="list-group-item d-flex justify-content-between align-items-center"
+                  >
+                    <h3>Messages List</h3>
+                  </li>
+                  {% for contact in contacts%}
+                  <ul class="list-group">
+                    <li
+                      class="list-group-item d-flex justify-content-between align-items-center"
+                    >
+                      {{contact.name}}
+                      <a
+                        href="{% url 'msg_detail' contact.id %}"
+                        class="text-dark"
+                        ><button class="btn btn-outline-primary btn-sm">
+                          Read More
+                        </button>
+                      </a>
+                    </li>
+                  </ul>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{%else%} you're not allowed here {% endif%} {% endblock body %}

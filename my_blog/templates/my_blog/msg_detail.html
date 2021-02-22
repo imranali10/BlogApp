@@ -1,0 +1,31 @@
+{% extends "my_blog/base.html" %} {% block body %}
+
+<div class="container my-4">
+  <div class="list-group">
+    <a href="#" class="list-group-item list-group-item-action active">
+      Message From: {{contact.name}}
+    </a>
+    <small href="#" class="list-group-item list-group-item-action"
+      >Email: {{contact.email}}</small
+    >
+    <small href="#" class="list-group-item list-group-item-action"
+      >Phone: {{contact.phone}}</small
+    >
+    <small href="#" class="list-group-item list-group-item-action"
+      >Message: {{contact.desc}}</small
+    >
+  </div>
+  <br />
+  <hr />
+  Would You like do delete this Messege?
+  <br />
+  <a class="btn btn-info btn-sm my-2" href="{% url 'dashboard' %}"
+    >&laquo; Nope, Back</a
+  >
+
+  <form action="" method="POST">
+    {% csrf_token%}
+    <button class="btn btn-danger btn-sm" type="submit">Yes, Delete it</button>
+  </form>
+</div>
+{% endblock body %}

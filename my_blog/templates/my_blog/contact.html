@@ -1,0 +1,18 @@
+{% extends "my_blog/base.html" %} {% block body %} {% block css %}
+<style>
+  .container {
+    min-height: 50vh;
+  }
+</style>
+{% endblock css %}
+
+<div class="container my-3 card">
+  <h3 class="mb-4">Contact Us</h3>
+  <form action="/contact/" method="POST">
+    {% csrf_token %}
+    <div class="form-group">{{form.as_p}}</div>
+    <button type="submit" class="button1">Submit</button>
+  </form>
+</div>
+
+{%endblock body %}

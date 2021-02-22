@@ -1,0 +1,48 @@
+{% extends "my_blog/base.html" %} {% block body %} {% block css %}
+<style>
+  .container {
+    min-height: 60vh;
+  }
+</style>
+{% endblock css %}
+
+<div class="container">
+  <h1 class="wlcm-blog">Welcome to <span>iCoders Blogs</span></h1>
+
+  {% for blog in blogs%}
+  <div class="blog-card">
+    <h4 class="">
+      <!-- <a href="/blogpost/{{blog.slug}}" class="blog-title">{{blog.title}}</a> -->
+      <a href="{% url 'blogpost' blog.slug%}" class="blog-title"
+        >{{blog.title}}</a
+      >
+      <i class="blog-time">-{{blog.time}}</i>
+    </h4>
+    <h6 class="my-2 blog-desc">{{blog.desc}}</h6>
+    <a href="/blogpost/{{blog.slug}}" class="text-dark"
+      ><button class="readmore-btn">Read More...</button>
+    </a>
+  </div>
+  {% endfor %}
+  <div class="my-3">
+    {% if prev %}
+    <button class="pre-nxt-btn">
+      <a class="text-light" href="/blog?page={{prev}}">&laquo; Previous</a>
+    </button>
+    {% else %}
+    <button class="pre-nxt-btn" disabled>
+      <a class="text-light">&laquo; Previous</a>
+    </button>
+    {% endif %} {% if nxt %}
+    <button class="pre-nxt-btn float-right">
+      <a class="text-light" href="/blog?page={{nxt}}">Next &raquo;</a>
+    </button>
+    {% else %}
+    <button class="pre-nxt-btn float-right" disabled>
+      <a class="text-light">Next &raquo;</a>
+    </button>
+    {% endif %}
+  </div>
+</div>
+
+{% endblock body %}
