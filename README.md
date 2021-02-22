@@ -1,0 +1,2 @@
+# DjangoApp
+Django Blog App
